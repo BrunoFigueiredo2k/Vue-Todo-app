@@ -25,10 +25,9 @@ export default {
     deleteTodo(id) {
       axios
         .delete(`https://jsonplaceholder.typicode.com/todos/${id}`)
-        .then(
-          (res) =>
-            (this.todos = this.todos.filter((todo) => todo.id !== id, res.data))
-        )
+        .then((res) => {
+          this.todos = this.todos.filter((todo) => todo.id !== id, res.data);
+        })
         .catch((error) => console.log(error));
     },
     addTodo(newTodo) {
@@ -53,7 +52,7 @@ export default {
   created() {
     // Simple GET request using fetch
     axios
-      .get("https://jsonplaceholder.typicode.com/todos?_limit=20")
+      .get("https://jsonplaceholder.typicode.com/todos?_limit=5")
       .then((res) => (this.todos = res.data))
       .catch((error) => console.log(error));
   },
